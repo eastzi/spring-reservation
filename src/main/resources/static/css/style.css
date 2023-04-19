@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-size: 11px;
+}
+
+body, html {
+    margin: 0px;
+}
+
+input, select, textarea {
+    margin-bottom: 15px;
+    border: 1px solid rgb(198, 198, 198);
+    padding: 10px;
+
+    width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border: 1px solid black;
+}
+
+@keyframes button-fadein {
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: black;
+        text-decoration: underline;
+    }
+}
+@keyframes button-fadeout {
+    from {
+        background-color: black;
+    }
+    to {
+        background-color: white;
+        text-decoration: underline;
+    }
+}
+@keyframes black-button-fadein {
+    from {
+        background-color: black;
+    }
+    to {
+        background-color: rgb(100, 100, 100);
+        text-decoration: underline;
+    }
+}
+@keyframes black-button-fadeout {
+    from {
+        background-color: rgb(100, 100, 100);
+        text-decoration: underline;
+    }
+    to {
+        background-color: black;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+main {
+    margin-top: 20px;
+}
