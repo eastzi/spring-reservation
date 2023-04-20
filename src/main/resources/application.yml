@@ -7,7 +7,7 @@ spring:
     
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://web-study.comk4qk0lgp4.ap-northeast-2.rds.amazonaws.com:3306/clone?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    url: jdbc:mariadb://web-study.comk4qk0lgp4.ap-northeast-2.rds.amazonaws.com:3306/reservation?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     username: admin
     password: 1q2w3e4r 
 

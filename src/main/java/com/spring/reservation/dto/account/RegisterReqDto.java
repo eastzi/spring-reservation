@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.spring.reservation.domain.User;
 import com.spring.reservation.dto.validation.ValidationGroups;
 
 import lombok.Data;
@@ -32,11 +33,12 @@ public class RegisterReqDto {
 			groups = ValidationGroups.PatternCheckGroup.class)
 	private String firstName;
 	
-	@NotBlank(message = "아이디는 비워둘 수 없습니다.")
+	@NotBlank(message = "아이디는 비워둘 수 없습니다.",
+			groups = ValidationGroups.NotBlankGroup.class)
 	@Size(min = 4, max = 10,
 		message = "아이디는 4자리에서 10자리 사이 입니다.",
 		groups = ValidationGroups.SizeCheckGroup.class)
-	private String userName;
+	private String userId;
 	
 	@Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*_])[a-zA-Z\\d-~!@#$%^&*_]{8,16}$",
 			message = "비밀번호는 숫자, 영문(대소문자), 특수기호를 하나 이상 포함해야합니다.",
@@ -49,15 +51,25 @@ public class RegisterReqDto {
 	private String password;
 	
 	@Email
-	@NotBlank(message = "이메일은 비워둘 수 없습니다.")
+	@NotBlank(message = "이메일은 비워둘 수 없습니다.",
+			groups = ValidationGroups.NotBlankGroup.class)
 	private String email;
 	
 	@NotBlank(message = "전화번호는 비워둘 수 없습니다.",
 			groups = ValidationGroups.NotBlankGroup.class)
-	@Size(min = 10, max = 11,
-		message = "10 ~ 11 자리의 숫자만 입력 가능합니다.",
-		groups = ValidationGroups.SizeCheckGroup.class)
-	@Pattern(regexp = "^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$", 
+	@Pattern(regexp = "^\\d{3}-\\d{3,4}-\\d{4}$", 
 			groups = ValidationGroups.PatternCheckGroup.class)
 	private String phoneNum;
+	
+	public User toUserEntity() {
+		return User.builder()
+				.user_id(userId)
+				.user_name(firstName + lastName)
+				.user_password(password)
+				.user_email(email)
+				.user_phone(phoneNum)
+				.role_id(1)
+				.build();
+	}
+	
 }
