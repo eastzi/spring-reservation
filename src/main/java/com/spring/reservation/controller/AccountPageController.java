@@ -10,7 +10,7 @@ public class AccountPageController {
 	
 	@GetMapping("/login")
 	public String login() {
-		return "main/main";
+		return "account/login";
 	}
 
 	@GetMapping("/register")
