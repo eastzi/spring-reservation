@@ -4,7 +4,7 @@
     margin: 0px auto;
 }
 
-.login-aside {
+.login-left {
     width: 300px;
     height: 500px;
 
@@ -23,9 +23,11 @@
     text-align: center;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
+.btn-primary {
+    margin-bottom: 15px;
+    padding: 10px 0px;
+
+    width: 100%;
 }
 
 .login-show-recover {

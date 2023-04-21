@@ -1,13 +1,14 @@
 package com.spring.reservation.controller.api;
 
-import javax.validation.Valid;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.reservation.aop.annotation.LogAspect;
@@ -38,4 +39,5 @@ public class AccountApi {
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "Registration successful", registerReqDto));
 	}
+
 }
