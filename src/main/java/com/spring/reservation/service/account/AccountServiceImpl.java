@@ -1,12 +1,15 @@
 package com.spring.reservation.service.account;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import com.spring.reservation.domain.User;
 import com.spring.reservation.dto.account.RegisterReqDto;
+import com.spring.reservation.dto.account.UserLIstRespDto;
 import com.spring.reservation.exception.CustomValidationException;
 import com.spring.reservation.repository.AccountRepository;
 
@@ -40,6 +43,21 @@ public class AccountServiceImpl implements AccountService {
 		int result = accountRepository.save(userEntity);
 		
 		return result != 0;
+	}
+
+	@Override
+	public List<UserLIstRespDto> getUserList(int pageNumber, String searchText) throws Exception {
+		Map<String, Object> userMap = new HashMap<String, Object>();
+		userMap.put("index", (pageNumber - 1) * 10);
+		userMap.put("searchText", searchText);
+
+		List<UserLIstRespDto> list = new ArrayList<UserLIstRespDto>();
+		
+		accountRepository.getUserList(userMap).forEach(user -> {
+			list.add(user.toUserListRespDto());
+		});
+		
+		return list;
 	}
 
 }

@@ -24,4 +24,10 @@ public class AccountPageController {
 	public String register() {
 		return "account/register";
 	}
+	
+	@GetMapping("/user/list")
+	public String userList() {
+		return "account/user_list";
+	}
+	
 }

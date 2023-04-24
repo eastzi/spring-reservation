@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.spring.reservation.domain.User;
 import com.spring.reservation.dto.validation.ValidationGroups;
 
@@ -65,7 +67,7 @@ public class RegisterReqDto {
 		return User.builder()
 				.user_id(userId)
 				.user_name(firstName + lastName)
-				.user_password(password)
+				.user_password(new BCryptPasswordEncoder().encode(password))
 				.user_email(email)
 				.user_phone(phoneNum)
 				.role_id(1)
